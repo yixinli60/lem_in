@@ -6,7 +6,7 @@
 #    By: yli <yli@student.42.us.org>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/11 16:08:57 by yli               #+#    #+#              #
-#    Updated: 2017/07/11 16:38:19 by yli              ###   ########.fr        #
+#    Updated: 2017/07/12 15:15:59 by yli              ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,10 +15,10 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 LIBFT_DIR = ./src/libft
-LIBFTT = $(LIBFT_DIR)/libft.a
+LIBFT = $(LIBFT_DIR)/libft.a
 SRC = ./src
 
-FILENAMES =$(SRC) \
+FILENAMES = main.c
 
 OBJECTS = $(FILENAMES:.c=.o)
 
@@ -28,7 +28,10 @@ $(NAME): $(OBJECTS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(LIBFT) $(OBJECTS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -I . $(LIBFT_DIR) -o $@ $<
+	$(CC) $(CFLAGS) -c -I $(LIBFT_DIR) -o $@ $<
+
+$(LIBFT): force
+	$(MAKE) -C $(LIBFT_DIR)
 
 force:
 	true

@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+uintmax_t	ft_atoi(const char *str)
 {
 	int i;
-	int sign;
-	int nbr;
+	intmax_t sign;
+	uintmax_t nbr;
 
 	i = 0;
 	sign = 1;
